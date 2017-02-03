@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="utf-8">
+	<title>HangMan Game!</title>
+</head>
+
+	<body>
+		<h1>Guess any letter to start!</h1>
+		<div id="wins"></div>
+		<div id="losses"></div>
+		<div id="answer"></div>
+		<div id="counter"></div>
+		<div id="guesses"></div>
+		<div id="stat"></div>
+	</body>
+
+<script type="text/javascript">
+document.onload = function(startUp){
+	function startUp() {
+		for (var i = 0; i < randomWord.length; i++) {
+			answerArray[i] = "_";
+		}
+		s = answerArray.join(" ");
+		document.getElementById("answer").innerHTML = s;
+
+	document.onkeyup = function(event){
+		var letter = event.key;
+		var randomWordAr = ["football", "baseball", "basketball", "soccer", "rugby", "golf", "tennis"];
+		var randomWord = randomWordAr[Math.floor(Math.random() * randomWordAr.length)];
+
+
+		var s;
+		var count = 12;
+		var answerArray = [];
+			console.log(answerArray);
+
+		function letter(){
+			var letter = document.getElementById("letter").value;
+			document.getElementById("guesses").innerHTML = "Your guesses are: " + letter;
+			console.log(letter)
+		/*
+		document.onkeyup = function(event) {
+		var userguess = event.key;
+		var computerpick = letters[Math.floor(Math.random() * letters.length)];
+		console.log(computerpick);
+		*/
+			if (userguess == computerpick){
+			wins++;
+			}
+			else {
+				guessesleft--;
+			};
+			if (letter.length > 0){
+				for (var i = 0; i < randomWord.length; i++) {
+					if (randomWord[i] === letter){
+						answerArray[i] = letter;
+					}
+				}
+				count--;
+				document.getElementById("counter").innerHTML = "Number of guesses left: " + count;
+				document.getElementById("answer").innerHTML = answerArray.join(" ");
+			}
+			if(count<=0){
+				document.getElementById("stat").innerHTML = "Nice try - reload page to restart game"
+			}
+		}
+	}
+	}
+}
+
+</script>
+
+</html>
