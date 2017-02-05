@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
 	<meta charset="utf-8">
 	<title>HangMan Game!</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/javascript" href="assets/javascript/game.js">
 </head>
 
 	<body>
 		<h1>Guess any letter to start!</h1>
+		<input type="text" id="letter">
+		<input type="button" value="letter" onclick="letter()"/>
 		<div id="wins"></div>
 		<div id="losses"></div>
 		<div id="answer"></div>
@@ -28,7 +35,6 @@ document.onload = function(startUp){
 		var letter = event.key;
 		var randomWordAr = ["football", "baseball", "basketball", "soccer", "rugby", "golf", "tennis"];
 		var randomWord = randomWordAr[Math.floor(Math.random() * randomWordAr.length)];
-
 
 		var s;
 		var count = 12;
