@@ -7,74 +7,60 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/javascript" href="assets/javascript/game.js">
+	<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 </head>
 
-	<body>
-		<h1>Guess any letter to start!</h1>
-		<input type="text" id="letter">
-		<input type="button" value="letter" onclick="letter()"/>
-		<div id="wins"></div>
-		<div id="losses"></div>
-		<div id="answer"></div>
-		<div id="counter"></div>
-		<div id="guesses"></div>
-		<div id="stat"></div>
-	</body>
+<body>
+  <div class="container">
 
-<script type="text/javascript">
-document.onload = function(startUp){
-	function startUp() {
-		for (var i = 0; i < randomWord.length; i++) {
-			answerArray[i] = "_";
-		}
-		s = answerArray.join(" ");
-		document.getElementById("answer").innerHTML = s;
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hangman Game!</h1>
+        <h2>Guess the name of students from class!</h2>
+        <small>Click any letter to begin...</small>
+      </div>
 
-	document.onkeyup = function(event){
-		var letter = event.key;
-		var randomWordAr = ["football", "baseball", "basketball", "soccer", "rugby", "golf", "tennis"];
-		var randomWord = randomWordAr[Math.floor(Math.random() * randomWordAr.length)];
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><strong>Word to Guess</strong></h3>
+          </div>
+          <div class="panel-body">
+            <h3 id="word-blanks">_ _ _ _ _ _ _ _ _ </h3>
+          </div>
+        </div>
 
-		var s;
-		var count = 12;
-		var answerArray = [];
-			console.log(answerArray);
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <strong>Wrong Guesses: </strong> <span id="wrong-guesses"></span>
+          </div>
+        </div>
 
-		function letter(){
-			var letter = document.getElementById("letter").value;
-			document.getElementById("guesses").innerHTML = "Your guesses are: " + letter;
-			console.log(letter)
-		/*
-		document.onkeyup = function(event) {
-		var userguess = event.key;
-		var computerpick = letters[Math.floor(Math.random() * letters.length)];
-		console.log(computerpick);
-		*/
-			if (userguess == computerpick){
-			wins++;
-			}
-			else {
-				guessesleft--;
-			};
-			if (letter.length > 0){
-				for (var i = 0; i < randomWord.length; i++) {
-					if (randomWord[i] === letter){
-						answerArray[i] = letter;
-					}
-				}
-				count--;
-				document.getElementById("counter").innerHTML = "Number of guesses left: " + count;
-				document.getElementById("answer").innerHTML = answerArray.join(" ");
-			}
-			if(count<=0){
-				document.getElementById("stat").innerHTML = "Nice try - reload page to restart game"
-			}
-		}
-	}
-	}
-}
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <strong>Guesses Left: </strong> <span id="guesses-left">9</span>
+          </div>
+        </div>
 
-</script>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <strong>Wins: </strong> <span id="win-counter">0</span>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <strong>Losses: </strong> <span id="loss-counter">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 
 </html>
